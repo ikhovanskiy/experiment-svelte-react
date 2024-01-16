@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import afterFrame from "afterframe";
+import ttiPolyfill from "tti-polyfill";
 
 function App() {
   const [data, setData] = useState([]);
@@ -77,6 +78,9 @@ function App() {
               })
                 .then((res) => res.json())
                 .then((el) => console.log(el));
+              ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
+                console.log(tti);
+              });
             }, 1000);
           }, 1000);
         }, 1000);
