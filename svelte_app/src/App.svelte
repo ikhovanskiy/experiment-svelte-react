@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import afterFrame from "afterframe";
+  import ttiPolyfill from "tti-polyfill";
   let data = [];
   let answer = {
     create1000: "",
@@ -73,6 +74,9 @@
               })
                 .then((res) => res.json())
                 .then((el) => console.log(el));
+              ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
+                console.log(tti);
+              });
             }, 1000);
           }, 1000);
         }, 1000);
